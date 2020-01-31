@@ -42,21 +42,29 @@ class App(QMainWindow):
 		
 		widget = QWidget(self)
 		self.setCentralWidget(widget)
-		self.reviewButton = QtWidgets.QPushButton("Review",self)
-		self.layout = QGridLayout()
-		self.layout.addWidget(self.reviewButton,1,1)
-		widget.setLayout(self.layout)
+		layout = self.createGridLayout()
+		widget.setLayout(layout)
 		
 		self.show()
 	
 	#Create Layout
 	def createGridLayout(self):
 		layout = QGridLayout()
-		self.b1 = QtWidgets.QPushButton(self)
-		self.b1.setText("Click to validate errors")
-		self.b1.clicked.connect(self.buttonClicked)
-		self.b1.move(30,30)
-		layout.addWidget(self.b1,0,0,2,2)
+		revButton = QtWidgets.QPushButton("Review",self)
+		continueButton = QtWidgets.QPushButton("Continue to Ingestion",self)
+		textBox = QtWidgets.QTextEdit("Yolo")
+		textBox.setReadOnly(True)
+		label = QtWidgets.QLabel("<h2>Validation Error<h2>")
+		layout.addWidget(label,0,0,1,2)
+		layout.addWidget(continueButton,2,1)
+		layout.addWidget(revButton,2,0)
+		layout.addWidget(textBox,1,0,1,2)
+		layout.setRowStretch(0,1)
+		layout.setRowStretch(1,4)
+		layout.setRowStretch(2,1)
+		print(layout.columnCount())
+		print(layout.rowCount())
+		
 		return layout
 
 	#BUTONS IN MENU BAR
@@ -110,13 +118,6 @@ class App(QMainWindow):
 	def quitEvent(self):
 		qApp.quit()
 	
-	def showPopUp(self):
-		#Show pop up window
-		msg = QMessageBox()
-		msg.setWindowTitle("Validation Error")
-		msg.setStandardButtons(QMessageBox.Ignore|QMessageBox.Open)
-		msg.setDefaultButton(QMessageBox.Ignore)
-		x = msg.exec_()  # this will show our messagebox
 	
 	def buttonClicked(self):
 		#Push button to show window

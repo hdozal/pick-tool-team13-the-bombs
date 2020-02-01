@@ -54,15 +54,18 @@ class App(QMainWindow):
 		verticalLay = QtWidgets.QVBoxLayout()
 		verticalLay.addWidget(logEntry1)
 		verticalLay.addWidget(logEntry2)
-		label = QtWidgets.QLabel("Side Bar")
+		label = QtWidgets.QLabel("Vectors")
 
 		horizLay = QtWidgets.QHBoxLayout()
 
 		horizLay.addWidget(label)
+		label.setAlignment(Qt.AlignTop)
 		horizLay.addLayout(verticalLay)
 
 		generalLayout = QGridLayout()
 		search = QtWidgets.QTextEdit("Search")
+		search.setMaximumHeight(30)
+		search.setMaximumWidth(150)
 		generalLayout.addWidget(search)
 		generalLayout.addLayout(horizLay,1,0)
 		generalLayout.setRowStretch(0,1)

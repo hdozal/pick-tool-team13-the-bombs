@@ -99,7 +99,7 @@ class App(QMainWindow):
 	
 	def showSplash(self):
 		# Create and display the splash screen
-		splash_pix = QPixmap('loading.png')
+		splash_pix = QPixmap('C:\\Users\\vcone\\Desktop\\Cosas\\CS\\Software2\\GUI test\\pick-tool-team13-the-bombs\\loading.png')
 		splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
 		splash.setMask(splash_pix.mask())
 		# Show a message at the center of the dialog
